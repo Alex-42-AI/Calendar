@@ -7,11 +7,11 @@ class Date:
     def weekday(self):
         from Personal.Calendar.Calculator import Weekdays
         jan_1_weekday = self.__year - 1 + (self.__year - 1) // 4 - (self.__year - 1) // 100 + (self.__year - 1) // 400
-        month, day = 1, 1
+        month = 1
         while month < self.__month:
             jan_1_weekday += month_days(month, self.__year) - 28
             month += 1
-        return Weekdays[(jan_1_weekday + self.__day - day) % 7]
+        return Weekdays[(jan_1_weekday + self.__day - 1) % 7]
     def tomorrow(self):
         self.__day += 1
         if self.__day > month_days(self.__month, self.__year):
