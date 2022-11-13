@@ -11,10 +11,7 @@ class Date:
         while month < self.__month:
             jan_1_weekday += month_days(month, self.__year) - 28
             month += 1
-        while day < self.__day:
-            jan_1_weekday += 1
-            day += 1
-        return Weekdays[jan_1_weekday % 7]
+        return Weekdays[(jan_1_weekday + self.__day - day) % 7]
     def tomorrow(self):
         self.__day += 1
         if self.__day > month_days(self.__month, self.__year):
