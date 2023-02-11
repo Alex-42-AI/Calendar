@@ -56,10 +56,10 @@ class Date:
         return False
     def __lt__(self, other):
         if isinstance(other, Date):
-            return (self.__day, self.__month, self.__year) < (other.__day, other.__month, other.__year)
+            return (self.__year, self.__month, self.__day) < (other.__year, other.__month, other.__day)
     def __le__(self, other):
         if isinstance(other, Date):
-            return (self.__day, self.__month, self.__year) <= (other.__day, other.__month, other.__year)
+            return (self.__year, self.__month, self.__day) <= (other.__year, other.__month, other.__day)
     def __str__(self):
         return f'{self.__day:02d}:{self.__month:02d}:{self.__year}'
     def __repr__(self):
