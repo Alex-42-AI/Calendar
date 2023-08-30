@@ -13,23 +13,25 @@ class Date:
             month += 1
         return Weekdays[(jan_1_weekday + self.__day - 1) % 7]
     def tomorrow(self):
-        self.__day += 1
-        if self.__day > month_days(self.__month, self.__year):
-            self.__day = 1
-            self.__month += 1
-            if self.__month == 13:
-                self.__year += 1
-                self.__month = 1
-        return self
+        day, month, year = self.__day, self.__month, self.__year
+        day += 1
+        if day > month_days(month, year):
+            day = 1
+            month += 1
+            if month == 13:
+                year += 1
+                month = 1
+        return Date(day, month, year)
     def yesterday(self):
-        self.__day -= 1
-        if not self.__day:
-            self.__month -= 1
-            if not self.__month:
-                self.__month = 12
-                self.__year -= 1
-            self.__day = month_days(self.__month, self.__year)
-        return self
+        day, month, year = self.__day, self.__month, self.__year
+        day -= 1
+        if not day:
+            month -= 1
+            if not month:
+                month = 12
+                year -= 1
+            day = month_days(month, year)
+        return Date(day, month, year)
     def copy(self):
         return Date(self.__day, self.__month, self.__year)
     def __add__(self, other):
