@@ -1,9 +1,9 @@
 from Personal.Calendar.Calculator import month_days
 class Date:
     def __init__(self, day: int, month: int, year: int):
-        self.__month = max(min(month, 12), 0)
+        self.__month = max(min(month, 12), 1)
         self.__year = year
-        self.__day = max(min(day, month_days(self.__month, self.__year)), 0)
+        self.__day = max(min(day, month_days(self.__month, self.__year)), 1)
     def weekday(self):
         from Personal.Calendar.Calculator import Weekdays
         jan_1_weekday = self.__year - 1 + (self.__year - 1) // 4 - (self.__year - 1) // 100 + (self.__year - 1) // 400
